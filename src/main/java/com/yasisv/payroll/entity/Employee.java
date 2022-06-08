@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -27,7 +28,7 @@ public class Employee {
 	@JoinColumn(name ="emp_id",referencedColumnName  = "empId")
 	private List<Address> empAddress;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "dept_id", referencedColumnName = "deptId")
 	private Department department;
 	

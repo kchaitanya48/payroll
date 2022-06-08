@@ -7,5 +7,7 @@ import com.yasisv.payroll.entity.Department;
 
 @Repository
 public interface DepartmentRepository extends JpaRepository<Department, Integer> {
+	
+	public Department findByDeptName(String deptName);
 
 }

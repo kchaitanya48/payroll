@@ -28,7 +28,6 @@ public class EmployeeService {
 
 	@Transactional
 	public void saveEmployee(Employee employee) {
-		//departmentRepository.findById(employee.getDepartment().getDeptName().valueOf(null));
 		empRepository.saveAndFlush(employee);
 	}
 	

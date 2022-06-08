@@ -18,4 +18,9 @@ public class DepartmentService {
 	public void addDepartment(Department department) {
 		departmentRepository.save(department);
 	}
+	
+	
+	public Department getDeptId(String deptName) {
+		return departmentRepository.findByDeptName(deptName);
+	}
 }

@@ -23,9 +23,7 @@ public class EmployeeDto {
 	
 	private List<AddressDto> empAddress;
 
-	
-	
-	
+	private String   deptName;
 	
 	
 	public int getEmpId() {
@@ -33,6 +31,13 @@ public class EmployeeDto {
 	}
 	public void setEmpId(int empId) {
 		this.empId = empId;
+	}
+	
+	public String getDeptName() {
+		return deptName;
+	}
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
 	}
 	public String getEmpName() {
 		return empName;

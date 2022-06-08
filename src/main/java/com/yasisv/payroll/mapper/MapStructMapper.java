@@ -13,15 +13,15 @@ import com.yasisv.payroll.model.EmployeeDto;
 )
 public interface MapStructMapper {
 
-	EmployeeDto employeeToEmployeeDto(Employee employee);
-	Employee employeeDtoToEmployee(EmployeeDto employeeDto);
 	
 	
 	AddressDto addressToAddressDto(Address Address);
 	Address addressDtoToAdress(AddressDto addressDto);
 	
-	DepartmentDto departmentToDepartmentDto(Department department);
-	Department departmentDtoToDepartment(DepartmentDto departmentDto);
+	
+	  DepartmentDto departmentToDepartmentDto(Department department); Department
+	  departmentDtoToDepartment(DepartmentDto departmentDto);
+	 
 	
 	
 	

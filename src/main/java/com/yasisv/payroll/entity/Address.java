@@ -2,6 +2,8 @@ package com.yasisv.payroll.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,6 +18,7 @@ public class Address {
 	 * @Column private int empId;
 	 */
 	@Column
+	@Enumerated(EnumType.STRING)
 	private AddressType AddrType;
 	@Column
 	private String address1;

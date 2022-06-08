@@ -1,12 +1,10 @@
 package com.yasisv.payroll.model;
 
-import com.yasisv.payroll.entity.DeparmentEnum;
-
 public class DepartmentDto {
 	
 	private int deptId;
 	
-	private DeparmentEnum deptName;
+	private String deptName;
 
 	public int getDeptId() {
 		return deptId;
@@ -16,13 +14,14 @@ public class DepartmentDto {
 		this.deptId = deptId;
 	}
 
-	public DeparmentEnum getDeptName() {
+	public String getDeptName() {
 		return deptName;
 	}
 
-	public void setDeptName(DeparmentEnum deptName) {
+	public void setDeptName(String deptName) {
 		this.deptName = deptName;
 	}
-
 	
+	
+
 }

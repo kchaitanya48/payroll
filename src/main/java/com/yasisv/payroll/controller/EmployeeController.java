@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.yasisv.payroll.entity.Address;
 import com.yasisv.payroll.entity.AddressType;
 import com.yasisv.payroll.entity.Employee;
+import com.yasisv.payroll.mapper.EmployeeMapper;
 import com.yasisv.payroll.mapper.MapStructMapper;
 import com.yasisv.payroll.model.AddressDto;
 import com.yasisv.payroll.model.EmployeeDto;
@@ -24,6 +25,9 @@ public class EmployeeController {
 
 	@Autowired
 	private MapStructMapper mapstructMapper;
+	
+	@Autowired
+	private EmployeeMapper employeeMapper;
 
 	@GetMapping("/newEmployee")
 	public String saveDetails() {
@@ -45,7 +49,8 @@ public class EmployeeController {
 		List<AddressDto> listAddressDto = new ArrayList<AddressDto>();
 		listAddressDto.add(addressDto);
 		empDto.setEmpAddress(listAddressDto);
-		service.saveEmployee(mapstructMapper.employeeDtoToEmployee(empDto));
+		empDto.setDeptName("MANAGER");
+		service.saveEmployee(employeeMapper.employeeDtoToEmployee(empDto));
 		return "Hello world";
 	}
 
@@ -56,7 +61,7 @@ public class EmployeeController {
 
 		empDto.setEmpId(1);
 		empDto.setEmpName("krishna chaitanya");
-		service.updateEmployee(mapstructMapper.employeeDtoToEmployee(empDto));
+		service.updateEmployee(employeeMapper.employeeDtoToEmployee(empDto));
 	}
 
 	@GetMapping("/addEmployeeAddress")
@@ -79,7 +84,7 @@ public class EmployeeController {
 		List<AddressDto> addressList = new ArrayList<AddressDto>();
 		addressList.add(addressDto);
 		empDto.setEmpAddress(addressList);
-		service.addEmployeeAddress(mapstructMapper.employeeDtoToEmployee(empDto));
+		service.addEmployeeAddress(employeeMapper.employeeDtoToEmployee(empDto));
 
 	}
 
