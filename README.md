@@ -7,5 +7,10 @@
 
 2 ### below command tells to make branch as upstream or default branch to commit code while using git push origin 
     git push --set-upstream origin develop
+    
+3 ### Merge command deails below
+    
+     https://stackabuse.com/git-merge-branch-into-master/
+     
 
 
