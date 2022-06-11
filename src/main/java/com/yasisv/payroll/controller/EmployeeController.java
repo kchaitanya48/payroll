@@ -1,15 +1,13 @@
 package com.yasisv.payroll.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yasisv.payroll.entity.Address;
-import com.yasisv.payroll.entity.AddressType;
 import com.yasisv.payroll.entity.Employee;
 import com.yasisv.payroll.mapper.EmployeeMapper;
 import com.yasisv.payroll.mapper.MapStructMapper;
@@ -26,65 +24,37 @@ public class EmployeeController {
 
 	@Autowired
 	private MapStructMapper mapstructMapper;
-	
+
 	@Autowired
 	private EmployeeMapper employeeMapper;
-
-	@GetMapping("/newEmployee")
-	public String saveDetails(@RequestBody EmployeeDto empDto) {
-
-		service.saveEmployee(employeeMapper.employeeDtoToEmployee(empDto));
-		return "Hello world";
+	
+	@GetMapping("/employee/{empId}")
+	public EmployeeDto getEmployee(@PathVariable Integer empId) {
+		
+		return employeeMapper.employeeToEmployeeDto(service.getEmployee(empId));
 	}
 
-	@GetMapping("/updateEmployee")
-	public void updateEmployee() {
+	@PostMapping("/employee")
+	public EmployeeDto saveDetails(@RequestBody EmployeeDto empDto) {
 
-		EmployeeDto empDto = new EmployeeDto();
+		Employee emp=service.saveEmployee(employeeMapper.employeeDtoToEmployee(empDto));
+		return employeeMapper.employeeToEmployeeDto(emp);
+	}
 
-		empDto.setEmpId(1);
-		empDto.setEmpName("krishna chaitanya");
+	@PutMapping("/employee")
+	public void updateEmployee(@RequestBody EmployeeDto empDto) {
 		service.updateEmployee(employeeMapper.employeeDtoToEmployee(empDto));
 	}
 
-	@GetMapping("/addEmployeeAddress")
-	public void addEmployeeAddress() {
-		EmployeeDto empDto = new EmployeeDto();
+	@PostMapping("/address")
+	public void addEmployeeAddress(@RequestBody EmployeeDto empDto) {
 
-
-		empDto.setEmpId(1);
-		empDto.setEmpName("krishna chaitanya");
-
-		AddressDto addressDto = new AddressDto();
-		addressDto.setAddress1("hyderabad11");
-		addressDto.setAddress2("address22");
-		// address.setAddrId(2001);
-		addressDto.setAddrType(AddressType.OFFICE);
-		addressDto.setCity("Hyderabad");
-		addressDto.setCountry("INDIA");
-		addressDto.setPincode(500089);
-		addressDto.setState("Telangana");
-		List<AddressDto> addressList = new ArrayList<AddressDto>();
-		addressList.add(addressDto);
-		empDto.setEmpAddress(addressList);
 		service.addEmployeeAddress(employeeMapper.employeeDtoToEmployee(empDto));
 
 	}
 
-	@GetMapping("/updateEmployeeAddress")
-	public void updateEmployeeAddress() {
-
-
-		AddressDto addressDto = new AddressDto();
-		addressDto.setAddrId(22);
-		addressDto.setAddress1("pragathinagar");
-		addressDto.setAddress2("hyderabad");
-
-		addressDto.setAddrType(AddressType.HOME);
-		addressDto.setCity("Hyderabad");
-		addressDto.setCountry("INDIA");
-		addressDto.setPincode(500090);
-		addressDto.setState("Telangana");
+	@PutMapping("/address")
+	public void updateEmployeeAddress(@RequestBody AddressDto addressDto) {
 
 		service.updateEmployeeAddress(mapstructMapper.addressDtoToAdress(addressDto));
 

@@ -21,9 +21,11 @@ public class EmployeeDto {
 
 	private String empName;
 	
+	private String   deptName;
+	
 	private List<AddressDto> empAddress;
 
-	private String   deptName;
+
 	
 	
 	public int getEmpId() {

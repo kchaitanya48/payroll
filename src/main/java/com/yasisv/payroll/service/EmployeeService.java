@@ -13,7 +13,6 @@ import com.yasisv.payroll.repository.AddressRepository;
 import com.yasisv.payroll.repository.DepartmentRepository;
 import com.yasisv.payroll.repository.EmployeeRepository;
 
-
 @Service
 
 public class EmployeeService {
@@ -25,30 +24,39 @@ public class EmployeeService {
 	@Autowired
 	DepartmentRepository departmentRepository;
 
+	public Employee getEmployee(Integer empId) {
+
+		Optional<Employee> empOption = empRepository.findById(empId);
+		if (empOption.isPresent()) {
+			return empOption.get();
+		} else {
+			return null;
+		}
+	}
 
 	@Transactional
-	public void saveEmployee(Employee employee) {
-		empRepository.saveAndFlush(employee);
+	public Employee saveEmployee(Employee employee) {
+		return empRepository.saveAndFlush(employee);
 	}
-	
+
 	@Transactional
 	public void updateEmployee(Employee employee) {
-		Optional<Employee> ee1=empRepository.findById(employee.getEmpId());
-		Employee emp=ee1.get();
+		Optional<Employee> ee1 = empRepository.findById(employee.getEmpId());
+		Employee emp = ee1.get();
 		emp.setEmpName(employee.getEmpName());
 	}
-	
+
 	@Transactional
 	public void addEmployeeAddress(Employee employee) {
-		Optional<Employee> ee1=empRepository.findById(employee.getEmpId());
-		Employee emp=ee1.get();
+		Optional<Employee> ee1 = empRepository.findById(employee.getEmpId());
+		Employee emp = ee1.get();
 		emp.getEmpAddress().addAll(employee.getEmpAddress());
 	}
-	
+
 	@Transactional
 	public void updateEmployeeAddress(Address address) {
-		Optional<Address> aa=addressRepository.findById(address.getAddrId());
-		Address aa1=aa.get();
+		Optional<Address> aa = addressRepository.findById(address.getAddrId());
+		Address aa1 = aa.get();
 		aa1.setAddress1(address.getAddress1());
 		aa1.setAddress2(address.getAddress2());
 		aa1.setAddrType(address.getAddrType());
@@ -57,6 +65,5 @@ public class EmployeeService {
 		aa1.setPincode(address.getPincode());
 		aa1.setState(address.getState());
 	}
-
 
 }

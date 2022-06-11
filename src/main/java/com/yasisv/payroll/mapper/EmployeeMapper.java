@@ -18,7 +18,8 @@ public abstract class EmployeeMapper {
 
 	@Mapping(source = "deptName", target = "department", qualifiedByName = "deptNameToDepartment")
 	public abstract Employee employeeDtoToEmployee(EmployeeDto employeeDto);
-	// public abstract EmployeeDto employeeToEmployeeDto(Employee employee);
+	@Mapping(source = "department.deptName",target = "deptName")
+    public abstract EmployeeDto employeeToEmployeeDto(Employee employee);
 
 	@Named("deptNameToDepartment")
 	public Department deptNameToDepartment(String deptName) {
