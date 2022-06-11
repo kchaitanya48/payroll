@@ -1,5 +1,6 @@
 package com.yasisv.payroll.model;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -22,6 +23,10 @@ public class EmployeeDto {
 	private String empName;
 	
 	private String   deptName;
+	
+	private Date  serviceStartDate;
+	
+	private Date serviceEndDate;
 	
 	private List<AddressDto> empAddress;
 
@@ -52,6 +57,18 @@ public class EmployeeDto {
 	}
 	public void setEmpAddress(List<AddressDto> empAddress) {
 		this.empAddress = empAddress;
+	}
+	public Date getServiceStartDate() {
+		return serviceStartDate;
+	}
+	public void setServiceStartDate(Date serviceStartDate) {
+		this.serviceStartDate = serviceStartDate;
+	}
+	public Date getServiceEndDate() {
+		return serviceEndDate;
+	}
+	public void setServiceEndDate(Date serviceEndDate) {
+		this.serviceEndDate = serviceEndDate;
 	}
 	
 

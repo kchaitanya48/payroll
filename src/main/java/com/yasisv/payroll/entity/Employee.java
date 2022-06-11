@@ -32,8 +32,8 @@ public class Employee {
     @JoinColumn(name = "dept_id", referencedColumnName = "deptId")
 	private Department department;
 	
-	
-	
+	@OneToOne
+	private EmployeeSalary employeeSalary;
 	
 	public int getEmpId() {
 		return empId;
