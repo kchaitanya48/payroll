@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.yasisv.payroll.entity.Address;
@@ -30,26 +31,8 @@ public class EmployeeController {
 	private EmployeeMapper employeeMapper;
 
 	@GetMapping("/newEmployee")
-	public String saveDetails() {
+	public String saveDetails(@RequestBody EmployeeDto empDto) {
 
-		EmployeeDto empDto = new EmployeeDto();
-
-		// ee.setEmpId(1001);
-		empDto.setEmpName("krishna");
-
-		AddressDto addressDto = new AddressDto();
-		addressDto.setAddress1("hyderabad1");
-		addressDto.setAddress2("address2");
-		// address.setAddrId(2001);
-		addressDto.setAddrType(AddressType.OFFICE);
-		addressDto.setCity("Hyderabad");
-		addressDto.setCountry("INDIA");
-		addressDto.setPincode(500089);
-		addressDto.setState("Telangana");
-		List<AddressDto> listAddressDto = new ArrayList<AddressDto>();
-		listAddressDto.add(addressDto);
-		empDto.setEmpAddress(listAddressDto);
-		empDto.setDeptName("MANAGER");
 		service.saveEmployee(employeeMapper.employeeDtoToEmployee(empDto));
 		return "Hello world";
 	}
