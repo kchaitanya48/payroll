@@ -1,18 +1,17 @@
 package com.yasisv.payroll.entity;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 
 @Entity
@@ -24,16 +23,17 @@ public class Employee {
 	@Column
 	private String empName;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@JoinColumn(name ="emp_id",referencedColumnName  = "empId")
 	private List<Address> empAddress;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "dept_id", referencedColumnName = "deptId")
 	private Department department;
 	
-	@OneToOne
-	private EmployeeSalary employeeSalary;
+	/*
+	 * @OneToOne private EmployeeSalary employeeSalary;
+	 */
 	
 	public int getEmpId() {
 		return empId;

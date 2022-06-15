@@ -8,4 +8,6 @@ import com.yasisv.payroll.entity.Employee;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
+	
+
 }

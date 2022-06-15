@@ -3,9 +3,10 @@ package com.yasisv.payroll.model;
 public class EmployeeSalaryDto {
 	
 	private int sId;
-	private long salary;
+	private double salary;
 	private int pf;
 	private int empId;
+	
 	
 	
 	public int getsId() {
@@ -14,12 +15,7 @@ public class EmployeeSalaryDto {
 	public void setsId(int sId) {
 		this.sId = sId;
 	}
-	public long getSalary() {
-		return salary;
-	}
-	public void setSalary(long salary) {
-		this.salary = salary;
-	}
+	
 	public int getPf() {
 		return pf;
 	}
@@ -31,6 +27,12 @@ public class EmployeeSalaryDto {
 	}
 	public void setEmpId(int empId) {
 		this.empId = empId;
+	}
+	public double getSalary() {
+		return salary;
+	}
+	public void setSalary(double salary) {
+		this.salary = salary;
 	}
 	
 	
