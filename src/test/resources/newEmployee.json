@@ -1,0 +1,15 @@
+{
+    "empName": "swetha",
+    "deptName": "HR",
+    "empAddress": [
+        {
+            "address1": "naraspuram",
+            "address2": "naraspuram2",
+            "city": "naraspuram",
+            "state": "Andrapradesh",
+            "country": "INDIA",
+            "pincode": 522415,
+            "addrType": "HOME"
+        }
+    ]
+}

@@ -29,3 +29,5 @@ How to Return DTOs from Native Queries with Spring Data JPA(sqlresultsetmapping 
 1) https://www.youtube.com/watch?v=FQNxZD2dbaA
 
 
+SOAP https://www.youtube.com/watch?v=4eEcYKXtmtI&list=PLPnaArAh2-4RDjqGHvu94EGLd_JoKWUqh&index=2
+
