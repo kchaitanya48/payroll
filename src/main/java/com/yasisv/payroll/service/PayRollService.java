@@ -31,15 +31,17 @@ public class PayRollService {
 
 		Object[] o=eroll.get(0);
 		
-		BigDecimal salary=(BigDecimal) o[4];
+		
+		
+		Integer salary=(Integer) o[4];
 		double hra=salary.doubleValue()*0.15;
 		double trans=salary.doubleValue()*0.25;
 		double tax=salary.doubleValue()*0.30;
 		double grossSalary=salary.doubleValue()+hra+trans;
 		double netSalary=grossSalary-tax;
 		
-		BigDecimal employeeId=(BigDecimal) o[0];
-		BigDecimal pf=(BigDecimal) o[3];
+		Integer employeeId=(Integer) o[0];
+		Integer pf=(Integer) o[3];
 		
 		
 	

@@ -15,7 +15,7 @@ public interface EmployeeSalaryRepository extends JpaRepository<Employeesalary, 
 	
 
 	@Query(value ="SELECT e.emp_id as  employeeId,e.emp_name as employeeName,d.dept_name as departmentName,es.pf as pf ,es.salary as salary "
-			+ "FROM  employeesalary es , Employee e,Department d  where e.emp_id=es.emp_id and d.dept_id=e.dept_id and  e.emp_id = :empId",nativeQuery =true)
+			+ "FROM  employeesalary es , employee e,department d  where e.emp_id=es.emp_id and d.dept_id=e.dept_id and  e.emp_id = :empId",nativeQuery =true)
 	List<Object[]> findEmployeeAndEmloyeeSalaryByEmpId(@Param("empId") Integer empId);
 
 }
