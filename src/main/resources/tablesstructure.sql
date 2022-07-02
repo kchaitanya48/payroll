@@ -1,3 +1,6 @@
+create database kc;
+use kc;
+
 CREATE TABLE `department` (
   `DEPT_ID` int NOT NULL AUTO_INCREMENT,
   `DEPT_NAME` varchar(45) DEFAULT NULL,
