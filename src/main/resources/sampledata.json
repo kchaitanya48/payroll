@@ -1,3 +1,21 @@
 {
 "deptName":"HR"
 }
+
+
+===================================
+
+
+{
+"empName":"Krishna",
+"deptName":"Developer",
+"empAddres":[{
+    "addrType":"HOME",
+    "address1":"Hyderbad",
+    "address2":"Hyderabad",
+    "city":"Hyderabad",
+    "state":"telangana",
+    "country":"india",
+    "pincode":"500001"
+}]
+}
