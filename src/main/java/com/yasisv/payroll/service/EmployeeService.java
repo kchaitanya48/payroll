@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.yasisv.payroll.entity.Address;
 import com.yasisv.payroll.entity.Employee;
+import com.yasisv.payroll.exception.EmployeeServiceException;
 import com.yasisv.payroll.repository.AddressRepository;
 import com.yasisv.payroll.repository.DepartmentRepository;
 import com.yasisv.payroll.repository.EmployeeRepository;
@@ -24,14 +25,16 @@ public class EmployeeService {
 	@Autowired
 	DepartmentRepository departmentRepository;
 
-	public Employee getEmployee(Integer empId) {
+	public Employee getEmployee(Integer empId) throws EmployeeServiceException {
 
 		Optional<Employee> empOption = empRepository.findById(empId);
+	
 		if (empOption.isPresent()) {
 			return empOption.get();
 		} else {
-			return null;
+			empOption.orElseThrow(EmployeeServiceException::new);
 		}
+		return null;
 	}
 
 	@Transactional

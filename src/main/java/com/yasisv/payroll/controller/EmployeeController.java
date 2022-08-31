@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.yasisv.payroll.entity.Employee;
+import com.yasisv.payroll.exception.EmployeeServiceException;
 import com.yasisv.payroll.mapper.EmployeeMapper;
 import com.yasisv.payroll.mapper.MapStructMapper;
 import com.yasisv.payroll.model.AddressDto;
@@ -28,32 +29,37 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeMapper employeeMapper;
 	
-	@GetMapping("/employee/{empId}")
-	public EmployeeDto getEmployee(@PathVariable Integer empId) {
+	@GetMapping("/employees/{empId}")
+	public EmployeeDto getEmployee(@PathVariable Integer empId) throws EmployeeServiceException {
 		
-		return employeeMapper.employeeToEmployeeDto(service.getEmployee(empId));
+		try {
+			return employeeMapper.employeeToEmployeeDto(service.getEmployee(empId));
+		} catch (EmployeeServiceException e) {
+			throw new EmployeeServiceException("Employee Details are not available");
+		}
+		
 	}
 
-	@PostMapping("/employee")
+	@PostMapping("/employees")
 	public EmployeeDto saveDetails(@RequestBody EmployeeDto empDto) {
 
 		Employee emp=service.saveEmployee(employeeMapper.employeeDtoToEmployee(empDto));
 		return employeeMapper.employeeToEmployeeDto(emp);
 	}
 
-	@PutMapping("/employee")
+	@PutMapping("/employees")
 	public void updateEmployee(@RequestBody EmployeeDto empDto) {
 		service.updateEmployee(employeeMapper.employeeDtoToEmployee(empDto));
 	}
 
-	@PostMapping("/address")
+	@PostMapping("/addresses")
 	public void addEmployeeAddress(@RequestBody EmployeeDto empDto) {
 
 		service.addEmployeeAddress(employeeMapper.employeeDtoToEmployee(empDto));
 
 	}
 
-	@PutMapping("/address")
+	@PutMapping("/addresses")
 	public void updateEmployeeAddress(@RequestBody AddressDto addressDto) {
 
 		service.updateEmployeeAddress(mapstructMapper.addressDtoToAdress(addressDto));
