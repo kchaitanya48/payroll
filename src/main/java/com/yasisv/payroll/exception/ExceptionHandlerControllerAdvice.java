@@ -46,5 +46,19 @@ public class ExceptionHandlerControllerAdvice {
 
 		return error;
 	}
+	
+	
+	@ExceptionHandler(IllegalArgumentException.class)
+	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
+	public @ResponseBody ExceptionResponse handleIllegalArgumentExcepton(final IllegalArgumentException exception,
+			final HttpServletRequest request) {
+
+		ExceptionResponse error = new ExceptionResponse();
+		error.setErrorMessage(exception.getMessage());
+		error.callerURL(request.getRequestURI());
+
+		return error;
+	}
+
 
 } 

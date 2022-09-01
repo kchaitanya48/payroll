@@ -18,8 +18,8 @@ public class Address {
 	 * @Column private int empId;
 	 */
 	@Column
-	@Enumerated(EnumType.STRING)
-	private AddressType AddrType;
+	//@Enumerated(EnumType.STRING)
+	private String addressType;
 	@Column
 	private String address1;
 	@Column
@@ -41,12 +41,13 @@ public class Address {
 		this.addrId = addrId;
 	}
 
-	public AddressType getAddrType() {
-		return AddrType;
+	
+	public String getAddressType() {
+		return addressType;
 	}
 
-	public void setAddrType(AddressType addrType) {
-		AddrType = addrType;
+	public void setAddressType(String addressType) {
+		this.addressType = addressType;
 	}
 
 	public String getAddress1() {

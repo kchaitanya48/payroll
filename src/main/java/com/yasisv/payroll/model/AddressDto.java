@@ -1,13 +1,15 @@
 package com.yasisv.payroll.model;
 
 import com.yasisv.payroll.entity.AddressType;
+import com.yasisv.payroll.validator.EnumNamePattern;
 
 
 public class AddressDto {
 
 	private int addrId;
 	
-	private AddressType AddrType;
+	//@EnumNamePattern(regexp = "HOME|OFFICE|OTHER")
+	private AddressType addressType;
 
 	private String address1;
 
@@ -29,12 +31,13 @@ public class AddressDto {
 		this.addrId = addrId;
 	}
 
-	public AddressType getAddrType() {
-		return AddrType;
+
+	public AddressType getAddressType() {
+		return addressType;
 	}
 
-	public void setAddrType(AddressType addrType) {
-		AddrType = addrType;
+	public void setAddressType(AddressType addressType) {
+		this.addressType = addressType;
 	}
 
 	public String getAddress1() {

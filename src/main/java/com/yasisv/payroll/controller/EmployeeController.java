@@ -1,5 +1,7 @@
 package com.yasisv.payroll.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,7 +43,7 @@ public class EmployeeController {
 	}
 
 	@PostMapping("/employees")
-	public EmployeeDto saveDetails(@RequestBody EmployeeDto empDto) {
+	public EmployeeDto saveDetails(@Valid @RequestBody EmployeeDto empDto) {
 
 		Employee emp=service.saveEmployee(employeeMapper.employeeDtoToEmployee(empDto));
 		return employeeMapper.employeeToEmployeeDto(emp);

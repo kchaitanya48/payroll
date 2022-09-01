@@ -62,7 +62,7 @@ public class EmployeeService {
 		Address aa1 = aa.get();
 		aa1.setAddress1(address.getAddress1());
 		aa1.setAddress2(address.getAddress2());
-		aa1.setAddrType(address.getAddrType());
+		aa1.setAddressType(address.getAddressType());
 		aa1.setCity(address.getCity());
 		aa1.setCountry(address.getCountry());
 		aa1.setPincode(address.getPincode());

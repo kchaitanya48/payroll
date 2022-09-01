@@ -1,3 +1,4 @@
+drop database kc;
 create database kc;
 use kc;
 
@@ -17,7 +18,7 @@ CREATE TABLE `employee` (
 
 CREATE TABLE `address` (
   `ADDR_ID` int NOT NULL AUTO_INCREMENT,
-  `ADDR_TYPE` varchar(45) DEFAULT NULL,
+  `ADDRESS_TYPE` varchar(45) DEFAULT NULL,
   `ADDRESS1` varchar(45) DEFAULT NULL,
   `ADDRESS2` varchar(45) DEFAULT NULL,
   `CITY` varchar(45) DEFAULT NULL,
@@ -27,7 +28,7 @@ CREATE TABLE `address` (
   `EMP_ID` int DEFAULT NULL,
   PRIMARY KEY (`ADDR_ID`),
   KEY `empid_foreignkey_idx` (`EMP_ID`),
-  CONSTRAINT `empid_foreignkey` FOREIGN KEY (`EMP_ID`) REFERENCES `employee` (`EMP_ID`)
+  CONSTRAINT `empid_foreignkey` FOREIGN KEY (`EMP_ID`) REFERENCES `employee` (`EMP_ID`) ON DELETE  CASCADE 
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `employeesalary` (
@@ -38,5 +39,5 @@ CREATE TABLE `employeesalary` (
   PRIMARY KEY (`S_ID`),
   UNIQUE KEY `S_ID_UNIQUE` (`S_ID`),
   UNIQUE KEY `EMP_ID_UNIQUE` (`EMP_ID`),
-  CONSTRAINT `empsal_foreignkey` FOREIGN KEY (`EMP_ID`) REFERENCES `employee` (`EMP_ID`)
+  CONSTRAINT `empsal_foreignkey` FOREIGN KEY (`EMP_ID`) REFERENCES `employee` (`EMP_ID`)  ON DELETE  CASCADE 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
